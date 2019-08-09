@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#370df7</color>
+    <color name="colorArrow">#007aff</color>
+    <color name="colorBlack">#000</color>
+    <color name="colorGreen">#08c38d</color>
+    <color name="colorRed">#FF0202</color>
+    <color name="colorDelete">#f70d0d</color>
+<color name="colorHeader">#22224b</color>
+
+    <color name="colorOrange">#f77c0d</color>
+    <color name="colorOrangeDark">#dd6f0b</color>
+    <color name="colorBorderOrange">#bf5f09</color>
+    <color name="colorBtnBack">#eaeaef</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorText">#494969</color>
+    <color name="colorTimer">#fef1e6</color>
+    <color name="colorBack">#ebf8f8f8</color>
+    <color name="colorRightArrow">#c7c7cc</color>
+
+
+</resources>

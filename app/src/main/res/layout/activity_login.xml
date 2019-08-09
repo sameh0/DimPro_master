@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rlParent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorOrange"
+    >
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/ivIllustration"
+                android:layout_width="match_parent"
+                android:layout_height="349dp"
+                app:srcCompat="@drawable/illustration"
+                android:scaleType="fitXY"/>
+
+            <RelativeLayout
+                android:id="@+id/rlContent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/ivIllustration"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="25dp">
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:letterSpacing="-0.02"
+                    android:text="@string/abc"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="40sp" />
+
+                <RelativeLayout
+                    android:id="@+id/rlOption1"
+                    android:layout_width="match_parent"
+                    android:layout_height="82dp"
+                    android:layout_below="@+id/tvTitle"
+                    android:layout_marginTop="25dp"
+                    android:addStatesFromChildren="true"
+                    android:background="@drawable/custom_layout">
+
+                    <ImageView
+                        android:id="@+id/ivOption1"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/image_press"
+                        android:scaleType="centerCrop"
+                        android:selectAllOnFocus="true"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tvOption1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toEndOf="@+id/ivOption1"
+                        android:letterSpacing="-0.02"
+                        android:text="@string/option_1"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="15sp"
+                        android:selectAllOnFocus="true"
+                        />
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/rlOption2"
+                    android:layout_width="match_parent"
+                    android:layout_height="82dp"
+                    android:layout_below="@+id/rlOption1"
+                    android:layout_marginTop="12dp"
+                    android:addStatesFromChildren="true"
+                    android:background="@drawable/custom_layout">
+
+                    <ImageView
+                        android:id="@+id/ivOption2"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/image_press"
+                        android:scaleType="centerCrop"
+                        android:selectAllOnFocus="true"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvOption2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toEndOf="@+id/ivOption2"
+                        android:letterSpacing="-0.02"
+                        android:text="@string/option_2"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="15sp"
+                        android:selectAllOnFocus="true"
+                        />
+
+
+                </RelativeLayout>
+
+                <Button
+                    android:id="@+id/btnSubmit"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:layout_below="@+id/rlOption2"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="103dp"
+                    android:background="@drawable/custom_button"
+                    android:gravity="center"
+                    android:letterSpacing="-0.02"
+                    android:text="@string/button"
+                    android:textColor="@color/colorOrange"
+                    android:textSize="17sp" android:textAllCaps="false"
+                   android:clickable="true"
+                    android:elevation="0dp"
+                    />
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">DimPro</string>
+    <string name="abc">ABC</string>
+    <string name="option_1">Option 1</string>
+    <string name="option_2">Option 2</string>
+    <string name="button">Button</string>
+    <string name="title">Title</string>
+    <string name="text1">Text1</string>
+    <string name="x1">X1</string>
+    <string name="_12">12</string>
+    <string name="x2">X2</string>
+    <string name="_4">4</string>
+    <string name="_00_30">00:30</string>
+    <string name="button_z">Button Z</string>
+    <string name="home">Home</string>
+    <string name="about_us">About us</string>
+    <string name="terms">Terms and Conditions</string>
+    <string name="privacy">Privacy Policy</string>
+    <string name="delete_my_account">Delete my Account</string>
+    <string name="title_y">Title Y</string>
+    <string name="act_k">Act K</string>
+    <string name="btn_w">BTN W</string>
+    <string name="btn_o">BTN O</string>
+    <string name="butz">ButtonZ2</string>
+
+</resources>

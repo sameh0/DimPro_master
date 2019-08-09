@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rlOptions"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cvHorizontalLine"
+            android:layout_width="61dp"
+            android:layout_height="1dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="@color/colorBtnBack"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="1dp"></android.support.v7.widget.CardView>
+
+
+        <TextView
+                android:id="@+id/tvX1"
+            android:layout_width="89dp"
+            android:layout_height="75dp"
+            android:layout_below="@+id/cvHorizontalLine"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="61.5dp"
+            android:fontFamily="Monaco"
+            android:gravity="center"
+            android:letterSpacing="-0.03"
+            android:text="X1"
+            android:textColor="@color/colorText"
+            android:textSize="56.7sp"
+            android:clickable="true"/>
+
+        <TextView
+            android:id="@+id/tv12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvX1"
+            android:layout_marginStart="172.3dp"
+            android:gravity="center"
+            android:letterSpacing="-0.03"
+            android:text="12"
+            android:textColor="#494969"
+            android:textSize="36sp"
+            android:clickable="true"/>
+
+        <TextView
+            android:id="@+id/tvX2"
+            android:layout_width="89dp"
+            android:layout_height="75dp"
+            android:layout_below="@+id/tv12"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="34dp"
+            android:fontFamily="Monaco"
+            android:gravity="center"
+            android:letterSpacing="-0.03"
+            android:text="X2"
+            android:textColor="@color/colorText"
+            android:textSize="56.7sp"
+            android:clickable="true"/>
+
+        <TextView
+            android:id="@+id/tv4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvX2"
+            android:layout_marginStart="177.8dp"
+            android:gravity="center"
+            android:letterSpacing="-0.03"
+            android:text="4"
+            android:textColor="#494969"
+            android:textSize="36sp"
+            android:clickable="true"/>
+
+        <TextView
+            android:id="@+id/tvX3"
+            android:layout_width="89dp"
+            android:layout_height="75dp"
+            android:layout_below="@+id/tv4"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="34.3dp"
+            android:fontFamily="Monaco"
+            android:gravity="center"
+            android:letterSpacing="-0.03"
+            android:text="X3"
+            android:textColor="@color/colorText"
+            android:textSize="56.7sp"
+            android:clickable="true"/>
+
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvX3"
+            android:layout_marginBottom="56dp"
+            android:layout_marginStart="181.8dp"
+            android:gravity="center"
+            android:letterSpacing="-0.03"
+            android:text="1"
+            android:textColor="#494969"
+            android:textSize="36sp"
+            android:clickable="true"/>
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
+
