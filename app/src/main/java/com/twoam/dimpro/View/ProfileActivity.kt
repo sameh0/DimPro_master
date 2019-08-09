@@ -19,7 +19,7 @@ class ProfileActivity : AppCompatActivity(), View.OnClickListener {
     //region Events
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_profile1)
+        setContentView(R.layout.activity_profile)
 
         init()
     }
