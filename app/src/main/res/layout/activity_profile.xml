@@ -7,229 +7,448 @@
     tools:context="com.twoam.dimpro.View.ProfileActivity"
    >
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:fitsSystemWindows="true"
-        android:scrollbars="none">
+
         <RelativeLayout
+            android:id="@+id/cvParent"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <android.support.v7.widget.CardView
-                android:id="@+id/cvParent"
+            android:layout_height="100dp"
+            android:background="@color/colorBack"
+            >
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                app:cardBackgroundColor="@color/colorBack"
-                app:cardElevation="1dp"
-                >
+                android:layout_height="match_parent">
 
                 <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <RelativeLayout
-                        android:id="@+id/rlBack"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="?android:attr/selectableItemBackgroundBorderless"
-                        android:addStatesFromChildren="true">
-
-                        <ImageView
-                            android:id="@+id/ivBack"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_alignParentStart="true"
-                            android:layout_marginStart="8.5dp"
-                            android:layout_marginTop="12dp"
-                            android:src="@drawable/ic_back"
-                            android:duplicateParentState="true"/>
-
-                        <TextView
-                            android:id="@+id/tvHome"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
-                            android:layout_toRightOf="@+id/ivBack"
-                            android:letterSpacing="-0.02"
-                            android:lineSpacingExtra="5sp"
-                            android:text="@string/home"
-                            android:textColor="@color/colorArrow"
-                            android:textSize="17sp"
-                            android:duplicateParentState="true"/>
-
-                    </RelativeLayout>
-
-                    <TextView
-                        android:id="@+id/tvAct"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/rlBack"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="12dp"
-                        android:fontFamily="CircularStd-Bold"
-                        android:letterSpacing="0.01"
-                        android:lineSpacingExtra="7sp"
-                        android:text="@string/act_k"
-                        android:textColor="#000000"
-                        android:textSize="34sp" />
+                    android:id="@+id/rlBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:addStatesFromChildren="true">
 
                     <ImageView
-                        android:id="@+id/ivShare"
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginTop="52dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/share"
-                        android:background="?android:attr/selectableItemBackgroundBorderless"/>
+                        android:id="@+id/ivBack"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="8.5dp"
+                        android:layout_marginTop="12dp"
+                        android:src="@drawable/ic_back"
+                        android:duplicateParentState="true"/>
+
+                    <TextView
+                        android:id="@+id/tvHome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:layout_toRightOf="@+id/ivBack"
+                        android:letterSpacing="-0.02"
+                        android:lineSpacingExtra="5sp"
+                        android:text="@string/home"
+                        android:textColor="@color/colorArrow"
+                        android:textSize="17sp"
+                        android:duplicateParentState="true"/>
+
                 </RelativeLayout>
 
-            </android.support.v7.widget.CardView>
-            <RelativeLayout
-                android:id="@+id/rlAboutUs"
-                android:layout_width="match_parent"
-                android:layout_height="54dp"
-                android:layout_below="@+id/cvParent"
-                android:background="@drawable/one_side_border_layout"
-                android:labelFor="@+id/rlNotification"
-                android:addStatesFromChildren="true"
-                android:clickable="true"
-                >
-
                 <TextView
-                    android:id="@+id/tvAboutUs"
+                    android:id="@+id/tvAct"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
+                    android:layout_below="@+id/rlBack"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginTop="10dp"
-                    android:duplicateParentState="true"
-                    android:fontFamily="CircularStd-Book"
-                    android:letterSpacing="-0.02"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="CircularStd-Bold"
+                    android:letterSpacing="0.01"
                     android:lineSpacingExtra="7sp"
-                    android:selectAllOnFocus="true"
-                    android:text="@string/about_us"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="15sp" />
+                    android:text="@string/act_k"
+                    android:textColor="#000000"
+                    android:textSize="34sp" />
 
                 <ImageView
-                    android:id="@+id/ivAboutUs"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
+                    android:id="@+id/ivShare"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
                     android:layout_alignParentRight="true"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="10dp"
-                    android:duplicateParentState="true"
-                    android:selectAllOnFocus="true"
-                    android:src="@drawable/ic_right" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:id="@+id/rlTermsAndConditions"
-                android:layout_width="match_parent"
-                android:layout_height="54dp"
-                android:layout_below="@+id/rlAboutUs"
-                android:background="@drawable/one_side_border_layout"
-                android:clickable="true"
-                android:addStatesFromChildren="true">
-
-                <TextView
-                    android:id="@+id/tvTermsAndConditions"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="10dp"
-                    android:duplicateParentState="true"
-                    android:fontFamily="CircularStd-Book"
-                    android:letterSpacing="-0.02"
-                    android:lineSpacingExtra="7sp"
-                    android:text="@string/terms"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="15sp" />
-
-                <ImageView
-                    android:id="@+id/ivTermsAndConditions"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="10dp"
-                    android:duplicateParentState="true"
-                    android:src="@drawable/ic_right" />
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="52dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/share"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"/>
             </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/rlPrivacyPolicy"
-                android:layout_width="match_parent"
-                android:layout_height="54dp"
-                android:layout_below="@+id/rlTermsAndConditions"
-                android:background="@drawable/one_side_border_layout"
-                android:clickable="true"
-                android:addStatesFromChildren="true">
-
-                <TextView
-                    android:id="@+id/tvPrivacyPolicy"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="10dp"
-                    android:duplicateParentState="true"
-                    android:fontFamily="CircularStd-Book"
-                    android:letterSpacing="-0.02"
-                    android:lineSpacingExtra="7sp"
-                    android:text="@string/privacy"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="15sp" />
-
-                <ImageView
-                    android:id="@+id/ivPrivacyPolicy"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="10dp"
-                    android:duplicateParentState="true"
-                    android:src="@drawable/ic_right" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/rlDeleteAccount"
-                android:layout_width="match_parent"
-                android:layout_height="54dp"
-                android:layout_below="@+id/rlPrivacyPolicy"
-                android:background="@drawable/one_side_border_layout"
-                android:clickable="true"
-                android:addStatesFromChildren="true">
-
-                <TextView
-                    android:id="@+id/tvDeleteAccount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="10dp"
-                    android:duplicateParentState="true"
-                    android:fontFamily="CircularStd-Book"
-                    android:letterSpacing="-0.02"
-                    android:lineSpacingExtra="7sp"
-                    android:text="@string/delete_my_account"
-                    android:textColor="@color/colorDelete"
-                    android:textSize="15sp" />
-
-                <ImageView
-                    android:id="@+id/ivDeleteAccount"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="10dp"
-                    android:duplicateParentState="true"
-                    android:src="@drawable/ic_right" />
-            </RelativeLayout>
         </RelativeLayout>
 
-    </ScrollView>
+
+        <RelativeLayout
+            android:id="@+id/rlAboutUs"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_below="@+id/cvParent"
+            android:background="@drawable/one_side_border_layout"
+            android:labelFor="@+id/rlNotification"
+            android:addStatesFromChildren="true"
+            android:clickable="true"
+            >
+
+            <TextView
+                android:id="@+id/tvAboutUs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="10dp"
+                android:duplicateParentState="true"
+                android:fontFamily="CircularStd-Book"
+                android:letterSpacing="-0.02"
+                android:lineSpacingExtra="7sp"
+                android:selectAllOnFocus="true"
+                android:text="@string/about_us"
+                android:textColor="@color/colorBlack"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/ivAboutUs"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:duplicateParentState="true"
+                android:selectAllOnFocus="true"
+                android:src="@drawable/ic_right" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rlTermsAndConditions"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_below="@+id/rlAboutUs"
+            android:background="@drawable/one_side_border_layout"
+            android:clickable="true"
+            android:addStatesFromChildren="true">
+
+            <TextView
+                android:id="@+id/tvTermsAndConditions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="10dp"
+                android:duplicateParentState="true"
+                android:fontFamily="CircularStd-Book"
+                android:letterSpacing="-0.02"
+                android:lineSpacingExtra="7sp"
+                android:text="@string/terms"
+                android:textColor="@color/colorBlack"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/ivTermsAndConditions"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:duplicateParentState="true"
+                android:src="@drawable/ic_right" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlPrivacyPolicy"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_below="@+id/rlTermsAndConditions"
+            android:background="@drawable/one_side_border_layout"
+            android:clickable="true"
+            android:addStatesFromChildren="true">
+
+            <TextView
+                android:id="@+id/tvPrivacyPolicy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="10dp"
+                android:duplicateParentState="true"
+                android:fontFamily="CircularStd-Book"
+                android:letterSpacing="-0.02"
+                android:lineSpacingExtra="7sp"
+                android:text="@string/privacy"
+                android:textColor="@color/colorBlack"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/ivPrivacyPolicy"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:duplicateParentState="true"
+                android:src="@drawable/ic_right" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlDeleteAccount"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_below="@+id/rlPrivacyPolicy"
+            android:background="@drawable/one_side_border_layout"
+            android:clickable="true"
+            android:addStatesFromChildren="true">
+
+            <TextView
+                android:id="@+id/tvDeleteAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="10dp"
+                android:duplicateParentState="true"
+                android:fontFamily="CircularStd-Book"
+                android:letterSpacing="-0.02"
+                android:lineSpacingExtra="7sp"
+                android:text="@string/delete_my_account"
+                android:textColor="@color/colorDelete"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/ivDeleteAccount"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:duplicateParentState="true"
+                android:src="@drawable/ic_right" />
+        </RelativeLayout>
+
+    <!--<ScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:fillViewport="true"-->
+        <!--android:fitsSystemWindows="true"-->
+        <!--android:scrollbars="none">-->
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
+            <!---->
+            <!---->
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/cvParent"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="100dp"-->
+                <!--android:background="@color/colorBack"-->
+                <!--&gt;-->
+
+                <!--<RelativeLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent">-->
+
+                    <!--<RelativeLayout-->
+                        <!--android:id="@+id/rlBack"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:background="?android:attr/selectableItemBackgroundBorderless"-->
+                        <!--android:addStatesFromChildren="true">-->
+
+                        <!--<ImageView-->
+                            <!--android:id="@+id/ivBack"-->
+                            <!--android:layout_width="24dp"-->
+                            <!--android:layout_height="24dp"-->
+                            <!--android:layout_alignParentStart="true"-->
+                            <!--android:layout_marginStart="8.5dp"-->
+                            <!--android:layout_marginTop="12dp"-->
+                            <!--android:src="@drawable/ic_back"-->
+                            <!--android:duplicateParentState="true"/>-->
+
+                        <!--<TextView-->
+                            <!--android:id="@+id/tvHome"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_marginTop="12dp"-->
+                            <!--android:layout_toRightOf="@+id/ivBack"-->
+                            <!--android:letterSpacing="-0.02"-->
+                            <!--android:lineSpacingExtra="5sp"-->
+                            <!--android:text="@string/home"-->
+                            <!--android:textColor="@color/colorArrow"-->
+                            <!--android:textSize="17sp"-->
+                            <!--android:duplicateParentState="true"/>-->
+
+                    <!--</RelativeLayout>-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/tvAct"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_below="@+id/rlBack"-->
+                        <!--android:layout_marginLeft="16dp"-->
+                        <!--android:layout_marginTop="12dp"-->
+                        <!--android:fontFamily="CircularStd-Bold"-->
+                        <!--android:letterSpacing="0.01"-->
+                        <!--android:lineSpacingExtra="7sp"-->
+                        <!--android:text="@string/act_k"-->
+                        <!--android:textColor="#000000"-->
+                        <!--android:textSize="34sp" />-->
+
+                    <!--<ImageView-->
+                        <!--android:id="@+id/ivShare"-->
+                        <!--android:layout_width="28dp"-->
+                        <!--android:layout_height="28dp"-->
+                        <!--android:layout_alignParentRight="true"-->
+                        <!--android:layout_marginRight="16dp"-->
+                        <!--android:layout_marginTop="52dp"-->
+                        <!--android:scaleType="centerCrop"-->
+                        <!--android:src="@drawable/share"-->
+                        <!--android:background="?android:attr/selectableItemBackgroundBorderless"/>-->
+                <!--</RelativeLayout>-->
+
+            <!--</RelativeLayout>-->
+           <!---->
+           <!---->
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/rlAboutUs"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="54dp"-->
+                <!--android:layout_below="@+id/cvParent"-->
+                <!--android:background="@drawable/one_side_border_layout"-->
+                <!--android:labelFor="@+id/rlNotification"-->
+                <!--android:addStatesFromChildren="true"-->
+                <!--android:clickable="true"-->
+                <!--&gt;-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/tvAboutUs"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_centerVertical="true"-->
+                    <!--android:layout_marginLeft="16dp"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--android:duplicateParentState="true"-->
+                    <!--android:fontFamily="CircularStd-Book"-->
+                    <!--android:letterSpacing="-0.02"-->
+                    <!--android:lineSpacingExtra="7sp"-->
+                    <!--android:selectAllOnFocus="true"-->
+                    <!--android:text="@string/about_us"-->
+                    <!--android:textColor="@color/colorBlack"-->
+                    <!--android:textSize="15sp" />-->
+
+                <!--<ImageView-->
+                    <!--android:id="@+id/ivAboutUs"-->
+                    <!--android:layout_width="32dp"-->
+                    <!--android:layout_height="32dp"-->
+                    <!--android:layout_alignParentRight="true"-->
+                    <!--android:layout_marginRight="5dp"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--android:duplicateParentState="true"-->
+                    <!--android:selectAllOnFocus="true"-->
+                    <!--android:src="@drawable/ic_right" />-->
+            <!--</RelativeLayout>-->
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/rlTermsAndConditions"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="54dp"-->
+                <!--android:layout_below="@+id/rlAboutUs"-->
+                <!--android:background="@drawable/one_side_border_layout"-->
+                <!--android:clickable="true"-->
+                <!--android:addStatesFromChildren="true">-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/tvTermsAndConditions"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_centerVertical="true"-->
+                    <!--android:layout_marginLeft="16dp"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--android:duplicateParentState="true"-->
+                    <!--android:fontFamily="CircularStd-Book"-->
+                    <!--android:letterSpacing="-0.02"-->
+                    <!--android:lineSpacingExtra="7sp"-->
+                    <!--android:text="@string/terms"-->
+                    <!--android:textColor="@color/colorBlack"-->
+                    <!--android:textSize="15sp" />-->
+
+                <!--<ImageView-->
+                    <!--android:id="@+id/ivTermsAndConditions"-->
+                    <!--android:layout_width="32dp"-->
+                    <!--android:layout_height="32dp"-->
+                    <!--android:layout_alignParentRight="true"-->
+                    <!--android:layout_marginRight="5dp"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--android:duplicateParentState="true"-->
+                    <!--android:src="@drawable/ic_right" />-->
+            <!--</RelativeLayout>-->
+
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/rlPrivacyPolicy"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="54dp"-->
+                <!--android:layout_below="@+id/rlTermsAndConditions"-->
+                <!--android:background="@drawable/one_side_border_layout"-->
+                <!--android:clickable="true"-->
+                <!--android:addStatesFromChildren="true">-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/tvPrivacyPolicy"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_centerVertical="true"-->
+                    <!--android:layout_marginLeft="16dp"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--android:duplicateParentState="true"-->
+                    <!--android:fontFamily="CircularStd-Book"-->
+                    <!--android:letterSpacing="-0.02"-->
+                    <!--android:lineSpacingExtra="7sp"-->
+                    <!--android:text="@string/privacy"-->
+                    <!--android:textColor="@color/colorBlack"-->
+                    <!--android:textSize="15sp" />-->
+
+                <!--<ImageView-->
+                    <!--android:id="@+id/ivPrivacyPolicy"-->
+                    <!--android:layout_width="32dp"-->
+                    <!--android:layout_height="32dp"-->
+                    <!--android:layout_alignParentRight="true"-->
+                    <!--android:layout_marginRight="5dp"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--android:duplicateParentState="true"-->
+                    <!--android:src="@drawable/ic_right" />-->
+            <!--</RelativeLayout>-->
+
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/rlDeleteAccount"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="54dp"-->
+                <!--android:layout_below="@+id/rlPrivacyPolicy"-->
+                <!--android:background="@drawable/one_side_border_layout"-->
+                <!--android:clickable="true"-->
+                <!--android:addStatesFromChildren="true">-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/tvDeleteAccount"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_centerVertical="true"-->
+                    <!--android:layout_marginLeft="16dp"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--android:duplicateParentState="true"-->
+                    <!--android:fontFamily="CircularStd-Book"-->
+                    <!--android:letterSpacing="-0.02"-->
+                    <!--android:lineSpacingExtra="7sp"-->
+                    <!--android:text="@string/delete_my_account"-->
+                    <!--android:textColor="@color/colorDelete"-->
+                    <!--android:textSize="15sp" />-->
+
+                <!--<ImageView-->
+                    <!--android:id="@+id/ivDeleteAccount"-->
+                    <!--android:layout_width="32dp"-->
+                    <!--android:layout_height="32dp"-->
+                    <!--android:layout_alignParentRight="true"-->
+                    <!--android:layout_marginRight="5dp"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--android:duplicateParentState="true"-->
+                    <!--android:src="@drawable/ic_right" />-->
+            <!--</RelativeLayout>-->
+        <!--</RelativeLayout>-->
+
+    <!--</ScrollView>-->
 </RelativeLayout>
