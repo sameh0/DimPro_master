@@ -44,4 +44,7 @@ dependencies {
     // Emoji
     implementation "com.android.support:support-emoji:26.1.0"
     compile 'org.apache.commons:commons-lang3:3.4'
+
+    //permissions
+    implementation 'pub.devrel:easypermissions:0.4.0'
 }

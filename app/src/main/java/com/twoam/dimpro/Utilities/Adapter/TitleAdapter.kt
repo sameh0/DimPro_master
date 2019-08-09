@@ -55,12 +55,12 @@ class TitleAdapter(private val context: Context, private val titlesList: ArrayLi
         Glide.with(context).load(R.drawable.profile)
                 .into(holder.titleImage)
 
-        holder.titlex1.text = title.x1
-        holder.titlex2.text = title.x2
-        holder.titlex3.text = title.x3
-        holder.titlex4.text = title.x4
-        holder.titlex5.text = title.x5
-        holder.titlex6.text = title.x6
+        holder.tvxl.text = title.x1
+        holder.tv12.text = title.x2
+        holder.tvX2.text = title.x3
+        holder.tv4.text = title.x4
+        holder.tvX3.text = title.x5
+        holder.tv_4.text = title.x6
 
         if (holder.cTimer != null) {
             holder.stopTimer()
@@ -82,12 +82,12 @@ class TitleAdapter(private val context: Context, private val titlesList: ArrayLi
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         var titleImage: ImageView = itemView.findViewById(R.id.ivImage)
-        var titlex1: TextView = itemView.findViewById(R.id.tvxl)
-        var titlex2: TextView = itemView.findViewById(R.id.tv12)
-        var titlex3: TextView = itemView.findViewById(R.id.tvX2)
-        var titlex4: TextView = itemView.findViewById(R.id.tv4)
-        var titlex5: TextView = itemView.findViewById(R.id.tvX3)
-        var titlex6: TextView = itemView.findViewById(R.id.tv_4)
+        var tvxl: TextView = itemView.findViewById(R.id.tvxl)
+        var tv12: TextView = itemView.findViewById(R.id.tv12)
+        var tvX2: TextView = itemView.findViewById(R.id.tvX2)
+        var tv4: TextView = itemView.findViewById(R.id.tv4)
+        var tvX3: TextView = itemView.findViewById(R.id.tvX3)
+        var tv_4: TextView = itemView.findViewById(R.id.tv_4)
         var tvTimer: TextView = itemView.findViewById(R.id.tvTimer)
         var cTimer: CountDownTimer? = null
 
@@ -102,7 +102,7 @@ class TitleAdapter(private val context: Context, private val titlesList: ArrayLi
                 }
             }
 
-            titlex1.setOnClickListener({
+            tvxl.setOnClickListener({
                 val pos = adapterPosition
                 // check if item still exists
                 if (pos != RecyclerView.NO_POSITION) {
@@ -112,7 +112,9 @@ class TitleAdapter(private val context: Context, private val titlesList: ArrayLi
             })
 
 
-            titlex2.setOnClickListener({
+
+
+            tvX2.setOnClickListener({
                 val pos = adapterPosition
                 // check if item still exists
                 if (pos != RecyclerView.NO_POSITION) {
@@ -122,7 +124,7 @@ class TitleAdapter(private val context: Context, private val titlesList: ArrayLi
             })
 
 
-            titlex3.setOnClickListener({
+            tvX3.setOnClickListener({
                 val pos = adapterPosition
                 // check if item still exists
                 if (pos != RecyclerView.NO_POSITION) {
@@ -132,34 +134,6 @@ class TitleAdapter(private val context: Context, private val titlesList: ArrayLi
             })
 
 
-            titlex4.setOnClickListener({
-                val pos = adapterPosition
-                // check if item still exists
-                if (pos != RecyclerView.NO_POSITION) {
-                    title = titlesList[pos]
-                }
-
-            })
-
-
-            titlex5.setOnClickListener({
-                val pos = adapterPosition
-                // check if item still exists
-                if (pos != RecyclerView.NO_POSITION) {
-                    title = titlesList[pos]
-                }
-
-            })
-
-
-            titlex6.setOnClickListener({
-                val pos = adapterPosition
-                // check if item still exists
-                if (pos != RecyclerView.NO_POSITION) {
-                    title = titlesList[pos]
-                }
-
-            })
 
 
             tvTimer.setOnClickListener({

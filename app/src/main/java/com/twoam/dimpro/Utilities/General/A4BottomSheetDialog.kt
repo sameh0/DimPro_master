@@ -28,8 +28,6 @@ class A4BottomSheetDialog : BottomSheetDialogFragment(), IBottomSheetCallback, V
     private lateinit var tv1: TextView
 
 
-
-
     var Action: Int //0 log out 1 delete 2 cancel order
         get() {
             return action
@@ -77,23 +75,13 @@ class A4BottomSheetDialog : BottomSheetDialogFragment(), IBottomSheetCallback, V
                 this.dismiss()
                 action = 5
                 navigate(action)
-            }R.id.tvX3 -> {
+            }
+            R.id.tvX3 -> {
                 this.dismiss()
                 action = 6
                 navigate(action)
-            }R.id.tv1 -> {
-                this.dismiss()
-                action = 7
-                navigate(action)
-            }R.id.tv4 -> {
-                this.dismiss()
-                action = 8
-                navigate(action)
-            }R.id.tv12 -> {
-                this.dismiss()
-                action = 9
-                navigate(action)
             }
+
         }
     }
     //endregion
@@ -115,9 +103,6 @@ class A4BottomSheetDialog : BottomSheetDialogFragment(), IBottomSheetCallback, V
         tvX1.setOnClickListener(this)
         tvX2.setOnClickListener(this)
         tvX3.setOnClickListener(this)
-        tv1.setOnClickListener(this)
-        tv4.setOnClickListener(this)
-        tv12.setOnClickListener(this)
 
 
         if (Action == 0) //btnBtnW for loading purpose

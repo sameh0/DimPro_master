@@ -49,6 +49,12 @@ class ProfileActivity : AppCompatActivity(), View.OnClickListener {
 
         }
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(this,TitleActivity::class.java))
+        overridePendingTransition(R.anim.enter, R.anim.exit)
+    }
     //endregion
 
     //region Helper Functions

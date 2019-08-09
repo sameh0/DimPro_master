@@ -16,6 +16,8 @@
     <color name="colorBtnBack">#eaeaef</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorText">#494969</color>
+    <color name="colorOval">#ebe6fe</color>
+    <color name="transparent">#00000000</color>
     <color name="colorTimer">#fef1e6</color>
     <color name="colorBack">#ebf8f8f8</color>
     <color name="colorRightArrow">#c7c7cc</color>
