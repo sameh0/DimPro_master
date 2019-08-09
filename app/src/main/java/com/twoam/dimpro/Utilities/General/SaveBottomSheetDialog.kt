@@ -17,7 +17,7 @@ class SaveBottomSheetDialog : BottomSheetDialogFragment(), IBottomSheetCallback,
 
     internal var view: ViewGroup? = null
     lateinit var layout: CardView
-    private var closeListener: IBottomSheetCallback? = null
+    private var listener: IBottomSheetCallback? = null
     private var action: Int = 0
     private lateinit var btnBtnW: Button
     private lateinit var btnBtnO: Button
@@ -47,7 +47,7 @@ class SaveBottomSheetDialog : BottomSheetDialogFragment(), IBottomSheetCallback,
         super.onAttach(context)
 
         if (context is IBottomSheetCallback) {
-            closeListener = context
+            listener = context
         } else {
             throw ClassCastException(context.toString() + " must implement IBottomSheetCallback.onBottomSheetSelectedItem")
         }
@@ -63,12 +63,12 @@ class SaveBottomSheetDialog : BottomSheetDialogFragment(), IBottomSheetCallback,
         when (v?.id) {
             R.id.btnBtnW -> {
                 this.dismiss()
-                action = 0
+                action = 2
                 navigate(action)
             }
             R.id.btnBtnO -> {
                 this.dismiss()
-                action = 1
+                action = 3
                 navigate(action)
             }
         }
@@ -95,7 +95,7 @@ class SaveBottomSheetDialog : BottomSheetDialogFragment(), IBottomSheetCallback,
     }
 
     fun navigate(index: Int) {  // for action purpose
-        closeListener?.onBottomSheetSelectedItem(index)
+        listener?.onBottomSheetSelectedItem(index)
     }
 
     private fun process() {

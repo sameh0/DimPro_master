@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.twoam.dimpro.Model.Title
 import com.twoam.dimpro.R
 import com.twoam.dimpro.Utilities.Adapter.TitleAdapter
+import com.twoam.dimpro.Utilities.General.DisplayBottomSheetDialog
 import com.twoam.dimpro.Utilities.General.IBottomSheetCallback
 import com.twoam.dimpro.Utilities.General.SaveBottomSheetDialog
 import kotlinx.android.synthetic.main.activity_title_y.*
@@ -18,7 +19,7 @@ class TitleYActivity : AppCompatActivity(), View.OnClickListener, IBottomSheetCa
 
     //region Members
     private var titlesList = ArrayList<Title>()
-    private var bottomSheet = SaveBottomSheetDialog()
+    private var bottomSheet = DisplayBottomSheetDialog()
     //endregion
 
     //region Events
@@ -38,8 +39,8 @@ class TitleYActivity : AppCompatActivity(), View.OnClickListener, IBottomSheetCa
             }
             R.id.tvTitle -> // for test bottom sheet purpose
             {
-                bottomSheet.Action = 0
-                bottomSheet.show(supportFragmentManager, "bottomSheet")
+//                bottomSheet.Action = 0
+//                bottomSheet.show(supportFragmentManager, "bottomSheet")
             }
             R.id.tvActK -> {
                 startActivity(Intent(this, ProfileActivity::class.java))

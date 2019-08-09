@@ -18,7 +18,7 @@ class DisplayBottomSheetDialog : BottomSheetDialogFragment(), IBottomSheetCallba
 
     internal var view: ViewGroup? = null
     lateinit var layout: CardView
-    private var closeListener: IBottomSheetCallback? = null
+    private var listener: IBottomSheetCallback? = null
     private var action: Int = 0
     private var ivImage: ImageView? = null
     private  lateinit  var btnBtnO: Button
@@ -49,7 +49,7 @@ class DisplayBottomSheetDialog : BottomSheetDialogFragment(), IBottomSheetCallba
         super.onAttach(context)
 
         if (context is IBottomSheetCallback) {
-            closeListener = context
+            listener = context
         } else {
             throw ClassCastException(context.toString() + " must implement IBottomSheetCallback.onBottomSheetSelectedItem")
         }
@@ -78,10 +78,38 @@ class DisplayBottomSheetDialog : BottomSheetDialogFragment(), IBottomSheetCallba
     //endregion
 
     //region Helper Functions
+
+
+    fun getEmoticon(originalUnicode: Int): String {
+        return String(Character.toChars(originalUnicode))
+    }
+
+    private fun convertEmoji(content: String): String {
+        var content = content
+        content = content.replace("U\\+".toRegex(), "0x")
+        val keyword = "0x"
+
+        var index = content.indexOf(keyword)
+        var spaceIndex: Int
+
+        while (index >= 0) {
+            spaceIndex = content.indexOf(" ", index)
+
+            if (spaceIndex > index) {
+                val emoji = content.substring(index, spaceIndex)
+                content = content.replace(emoji.toRegex(), getEmoticon(Integer.decode(emoji)))
+            }
+            index = content.indexOf(keyword, index + keyword.length)
+        }
+
+        return content
+    }
     fun init() {
 
         btnBtnO = layout.findViewById(R.id.btnBtnO)
         btnBtnZ = layout.findViewById(R.id.btnBtnZ)
+        var value=convertEmoji("U+1F525")
+        btnBtnO.text = getString(R.string.btn_o)//+" "+ String(Character.toChars(value.toInt()))
 
         btnBtnO.setOnClickListener(this)
         btnBtnZ.setOnClickListener(this)
@@ -98,7 +126,7 @@ class DisplayBottomSheetDialog : BottomSheetDialogFragment(), IBottomSheetCallba
     }
 
     fun navigate(index: Int) {  // for action purpose
-        closeListener?.onBottomSheetSelectedItem(index)
+        listener?.onBottomSheetSelectedItem(index)
     }
 
     private fun process() {

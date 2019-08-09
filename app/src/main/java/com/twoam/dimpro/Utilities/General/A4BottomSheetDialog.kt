@@ -18,7 +18,7 @@ class A4BottomSheetDialog : BottomSheetDialogFragment(), IBottomSheetCallback, V
 
     internal var view: ViewGroup? = null
     lateinit var layout: CardView
-    private var closeListener: IBottomSheetCallback? = null
+    private var listener: IBottomSheetCallback? = null
     private var action: Int = 0
     private lateinit var tvX1: TextView
     private lateinit var tvX2: TextView
@@ -54,7 +54,7 @@ class A4BottomSheetDialog : BottomSheetDialogFragment(), IBottomSheetCallback, V
         super.onAttach(context)
 
         if (context is IBottomSheetCallback) {
-            closeListener = context
+            listener = context
         } else {
             throw ClassCastException(context.toString() + " must implement IBottomSheetCallback.onBottomSheetSelectedItem")
         }
@@ -68,14 +68,30 @@ class A4BottomSheetDialog : BottomSheetDialogFragment(), IBottomSheetCallback, V
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.btnBtnW -> {
+            R.id.tvX1 -> {
                 this.dismiss()
-                action = 0
+                action = 4
                 navigate(action)
             }
-            R.id.btnBtnO -> {
+            R.id.tvX2 -> {
                 this.dismiss()
-                action = 1
+                action = 5
+                navigate(action)
+            }R.id.tvX3 -> {
+                this.dismiss()
+                action = 6
+                navigate(action)
+            }R.id.tv1 -> {
+                this.dismiss()
+                action = 7
+                navigate(action)
+            }R.id.tv4 -> {
+                this.dismiss()
+                action = 8
+                navigate(action)
+            }R.id.tv12 -> {
+                this.dismiss()
+                action = 9
                 navigate(action)
             }
         }
@@ -116,7 +132,7 @@ class A4BottomSheetDialog : BottomSheetDialogFragment(), IBottomSheetCallback, V
     }
 
     fun navigate(index: Int) {  // for action purpose
-        closeListener?.onBottomSheetSelectedItem(index)
+        listener?.onBottomSheetSelectedItem(index)
     }
 
     private fun process() {
