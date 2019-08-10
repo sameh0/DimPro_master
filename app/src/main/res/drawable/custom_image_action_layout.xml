@@ -1,13 +1,19 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item  android:state_pressed="true">
-        <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-            <item>
-                <shape android:shape="oval">
-                </shape>
-            </item>
-        </layer-list>
+    <item android:state_pressed="true">
+        <shape android:shape="oval">
+            <solid android:color="@color/colorOval" />
+        </shape>
     </item>
 
+
+    <item  android:state_pressed="false">
+        <shape android:shape="oval">
+            <solid android:color="@color/transparent" />
+        </shape>
+    </item>
+
+
+    <item android:state_window_focused="true" android:drawable="@color/transparent"/>
 
 </selector>

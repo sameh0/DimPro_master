@@ -18,7 +18,12 @@ import com.twoam.dimpro.R
 import java.util.ArrayList
 import android.provider.Settings.System.DATE_FORMAT
 import android.os.CountDownTimer
+import android.view.MotionEvent
+import com.twoam.dimpro.R.id.rlOption1
+import com.twoam.dimpro.R.id.rlOption2
 import com.twoam.dimpro.R.string.text1
+import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.titles_recycle_layout.view.*
 import java.util.concurrent.TimeUnit
 
 
@@ -79,7 +84,7 @@ class TitleAdapter(private val context: Context, private val titlesList: ArrayLi
     }
 
 
-    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),View.OnTouchListener {
 
         var titleImage: ImageView = itemView.findViewById(R.id.ivImage)
         var tvxl: TextView = itemView.findViewById(R.id.tvxl)
@@ -93,45 +98,47 @@ class TitleAdapter(private val context: Context, private val titlesList: ArrayLi
 
         init {
 
-            itemView.setOnClickListener { v ->
-                // get position
-                val pos = adapterPosition
-                // check if item still exists
-                if (pos != RecyclerView.NO_POSITION) {
-                    title = titlesList[pos]
-                }
-            }
+//            itemView.setOnClickListener { v ->
+//                // get position
+//                val pos = adapterPosition
+//                // check if item still exists
+//                if (pos != RecyclerView.NO_POSITION) {
+//                    title = titlesList[pos]
+//                }
+//            }
 
-            tvxl.setOnClickListener({
-                val pos = adapterPosition
-                // check if item still exists
-                if (pos != RecyclerView.NO_POSITION) {
-                    title = titlesList[pos]
-                }
-
-            })
-
-
-
-
-            tvX2.setOnClickListener({
-                val pos = adapterPosition
-                // check if item still exists
-                if (pos != RecyclerView.NO_POSITION) {
-                    title = titlesList[pos]
-                }
-
-            })
+            tvxl.setOnTouchListener(this)
+//            tvxl.setOnClickListener({
+//                val pos = adapterPosition
+//                // check if item still exists
+//                if (pos != RecyclerView.NO_POSITION) {
+//                    title = titlesList[pos]
+//                }
+//
+//            })
 
 
-            tvX3.setOnClickListener({
-                val pos = adapterPosition
-                // check if item still exists
-                if (pos != RecyclerView.NO_POSITION) {
-                    title = titlesList[pos]
-                }
+            tvX2.setOnTouchListener(this)
 
-            })
+//            tvX2.setOnClickListener({
+//                val pos = adapterPosition
+//                // check if item still exists
+//                if (pos != RecyclerView.NO_POSITION) {
+//                    title = titlesList[pos]
+//                }
+//
+//            })
+
+
+            tvX3.setOnTouchListener(this)
+//            tvX3.setOnClickListener({
+//                val pos = adapterPosition
+//                // check if item still exists
+//                if (pos != RecyclerView.NO_POSITION) {
+//                    title = titlesList[pos]
+//                }
+//
+//            })
 
 
 
@@ -145,6 +152,32 @@ class TitleAdapter(private val context: Context, private val titlesList: ArrayLi
 
             })
 
+
+
+        }
+
+        override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+            when (v!!.id) {
+                tvxl.id -> {
+                    itemView.tvxl.isPressed = true
+                    itemView.tvX2.isPressed = false
+                    itemView.tvX3.isPressed = false
+
+                }
+
+                tvX2.id -> {
+                    itemView.tvX2.isPressed = true
+                    itemView.tvxl.isPressed = false
+                    itemView.tvX3.isPressed = false
+                }
+                tvX3.id -> {
+                    itemView.tvX2.isPressed = false
+                    itemView.tvxl.isPressed = false
+                    itemView.tvX3.isPressed = true
+                }
+
+            }
+            return true
         }
 
 

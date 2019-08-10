@@ -32,6 +32,7 @@
         android:text="@string/x1"
         android:textColor="@color/colorText"
         android:textSize="13sp"
+        android:background="@drawable/custom_image_action_layout"
 
         />
 
@@ -60,7 +61,8 @@
         android:letterSpacing="-0.02"
         android:text="@string/x2"
         android:textColor="@color/colorText"
-        android:textSize="13sp" />
+        android:textSize="13sp"
+        android:background="@drawable/custom_image_action_layout"/>
 
     <TextView
         android:id="@+id/tv4"
@@ -86,7 +88,8 @@
         android:letterSpacing="-0.02"
         android:text="X3"
         android:textColor="@color/colorText"
-        android:textSize="13sp" />
+        android:textSize="13sp"
+        android:background="@drawable/custom_image_action_layout"/>
 
     <TextView
         android:id="@+id/tv_4"
