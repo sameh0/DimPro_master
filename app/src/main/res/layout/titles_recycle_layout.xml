@@ -120,14 +120,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
+            <!--<ImageView-->
+                <!--android:id="@+id/ivTimer"-->
+                <!--android:layout_width="19dp"-->
+                <!--android:layout_height="19dp"-->
+                <!--android:layout_margin="3dp"-->
+                <!--android:scaleType="centerCrop"-->
+                <!--android:src="@drawable/timer" />-->
+            <com.twoam.dimpro.Utilities.widget.CircleCountDownView
                 android:id="@+id/ivTimer"
-                android:layout_width="19dp"
-                android:layout_height="19dp"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_margin="3dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/timer" />
-
+               />
             <TextView
                 android:id="@+id/tvTimer"
                 android:layout_width="match_parent"

@@ -19,9 +19,9 @@ import java.util.ArrayList
 import android.provider.Settings.System.DATE_FORMAT
 import android.os.CountDownTimer
 import android.view.MotionEvent
-import com.twoam.dimpro.R.id.rlOption1
-import com.twoam.dimpro.R.id.rlOption2
+import com.twoam.dimpro.R.id.*
 import com.twoam.dimpro.R.string.text1
+import com.twoam.dimpro.Utilities.widget.CircleCountDownView
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.titles_recycle_layout.view.*
 import java.util.concurrent.TimeUnit
@@ -38,7 +38,8 @@ class TitleAdapter(private val context: Context, private val titlesList: ArrayLi
     private var title: Title = Title()
     private var handler = Handler()
     private var runnable: Runnable? = null
-
+    private val formDays = 1000 * 60 * 60 * 24
+    private var minutesInitTime=30L //30  minutes
     private var countDownInterval = 1000L //1 seconds
     private var minutesInMS = 1800000L //30 minutes
     private var format = "%02d:%02d:%02d"
@@ -53,9 +54,6 @@ class TitleAdapter(private val context: Context, private val titlesList: ArrayLi
     override fun onBindViewHolder(holder: TitleAdapter.MyViewHolder, position: Int) {
         title = titlesList[position]
 
-///////////////// edit for api later reusing ///////////////////
-//        Glide.with(context).load(title.image)
-//                .into(holder.titleImage)
 
         Glide.with(context).load(R.drawable.profile)
                 .into(holder.titleImage)
@@ -72,6 +70,12 @@ class TitleAdapter(private val context: Context, private val titlesList: ArrayLi
         }
 
         holder.startTimer(minutesInMS, countDownInterval, holder.tvTimer)
+        holder.ivTimer.endTime = 60
+        holder.ivTimer.initTime = 30
+
+//        initView(holder)
+
+
 
     }
 
@@ -84,7 +88,53 @@ class TitleAdapter(private val context: Context, private val titlesList: ArrayLi
     }
 
 
-    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),View.OnTouchListener {
+    fun initView(holder: TitleAdapter.MyViewHolder) {
+
+//
+        holder.ivTimer.endTime = 60
+        holder.ivTimer.initTime = minutesInitTime
+        holder.ivTimer.setListener(CircleCountDownView.OnFinishCycleProgressBar {
+            if (holder.cTimer != null) {
+                holder.cTimer!!.onFinish()
+            }
+        })
+
+        startCountDownTimerMin(holder)
+    }
+
+    fun startCountDownTimerMin(holder: TitleAdapter.MyViewHolder) {
+        holder.cTimer = object : CountDownTimer(holder.ivTimer.endTime * formDays /*final time**/, formDays.toLong() /*interval**/) {
+            override fun onTick(millisUntilFinished: Long) {
+                holder.ivTimer.onTick(holder.ivTimer)
+                holder.tvTimer.text = "" + String.format(format,
+                        TimeUnit.MILLISECONDS.toHours(millisUntilFinished),
+                        TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) - TimeUnit.HOURS.toMinutes(
+                                TimeUnit.MILLISECONDS.toHours(millisUntilFinished)),
+                        TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - TimeUnit.MINUTES.toSeconds(
+                                TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)));
+            }
+
+            override fun onFinish() {
+            }
+        }
+        holder.cTimer!!.start()
+    }
+
+        fun cancelCounter(countdownTimer: CountDownTimer?) {
+        countdownTimer?.cancel()
+    }
+
+    fun stopCountDown(holder: TitleAdapter.MyViewHolder) {
+        cancelCounter(holder.cTimer)
+
+        holder.ivTimer.clear()
+//        mProgressMinute.clearAnimation()
+        holder.ivTimer.isFirstTime = true
+
+    }
+
+
+    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnTouchListener {
 
         var titleImage: ImageView = itemView.findViewById(R.id.ivImage)
         var tvxl: TextView = itemView.findViewById(R.id.tvxl)
@@ -94,6 +144,7 @@ class TitleAdapter(private val context: Context, private val titlesList: ArrayLi
         var tvX3: TextView = itemView.findViewById(R.id.tvX3)
         var tv_4: TextView = itemView.findViewById(R.id.tv_4)
         var tvTimer: TextView = itemView.findViewById(R.id.tvTimer)
+        var ivTimer: CircleCountDownView = itemView.findViewById(R.id.ivTimer)
         var cTimer: CountDownTimer? = null
 
         init {
@@ -141,8 +192,6 @@ class TitleAdapter(private val context: Context, private val titlesList: ArrayLi
 //            })
 
 
-
-
             tvTimer.setOnClickListener({
                 val pos = adapterPosition
                 // check if item still exists
@@ -151,7 +200,6 @@ class TitleAdapter(private val context: Context, private val titlesList: ArrayLi
                 }
 
             })
-
 
 
         }
@@ -184,17 +232,21 @@ class TitleAdapter(private val context: Context, private val titlesList: ArrayLi
         fun startTimer(minutesInMS: Long, countDownInterval: Long, tvTimer: TextView) {
             cTimer = object : CountDownTimer(minutesInMS, countDownInterval) {
                 override fun onTick(millisUntilFinished: Long) {
+                    ivTimer.onTick(ivTimer)
                     tvTimer.text = "" + String.format(format,
                             TimeUnit.MILLISECONDS.toHours(millisUntilFinished),
                             TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) - TimeUnit.HOURS.toMinutes(
                                     TimeUnit.MILLISECONDS.toHours(millisUntilFinished)),
                             TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - TimeUnit.MINUTES.toSeconds(
                                     TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)));
+
+
                 }
 
                 override fun onFinish() {}
             }
             cTimer!!.start()
+
         }
 
         //called on back pressed or stop to avoid memory leak
@@ -202,5 +254,7 @@ class TitleAdapter(private val context: Context, private val titlesList: ArrayLi
             if (cTimer != null)
                 cTimer!!.cancel()
         }
+
+
     }
 }

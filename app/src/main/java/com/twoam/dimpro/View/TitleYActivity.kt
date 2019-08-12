@@ -53,6 +53,12 @@ class TitleYActivity : AppCompatActivity(), View.OnClickListener, IBottomSheetCa
         }
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(this,TitleActivity::class.java))
+        overridePendingTransition(R.anim.enter, R.anim.exit)
+    }
+
     override fun onBottomSheetSelectedItem(index: Int) {
         when (index) {
             0 ->  //btnBtnW result

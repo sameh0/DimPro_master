@@ -58,6 +58,12 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, View.OnTouchLis
             }
         }
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(this,TitleActivity::class.java))
+        overridePendingTransition(R.anim.enter, R.anim.exit)
+    }
     //endregion
 
     //region Helper Functions

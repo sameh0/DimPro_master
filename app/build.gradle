@@ -47,4 +47,6 @@ dependencies {
 
     //permissions
     implementation 'pub.devrel:easypermissions:0.4.0'
+
+    compile 'com.serhatsurguvec.libraries:continuablecirclecountdownview:1.2'
 }
