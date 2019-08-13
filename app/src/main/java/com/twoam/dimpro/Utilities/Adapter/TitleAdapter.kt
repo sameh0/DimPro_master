@@ -79,7 +79,7 @@ class TitleAdapter(private val context: Context, private val titlesList: ArrayLi
 
         var sdf = holder
         if (listHolders.contains(holder)) {
-
+            sdf = holder
         } else {
 //            holder.id = position
             listHolders.add(holder)
@@ -208,7 +208,7 @@ class TitleAdapter(private val context: Context, private val titlesList: ArrayLi
         }
 
         private fun initTimer(){
-            timerState = PrefUtil.getTimerState(this)
+            timerState = PrefUtil.getTimerState(context)
 
             //we don't want to change the length of the timer which is already running
             //if the length was changed in settings while it was backgrounded
@@ -252,12 +252,11 @@ class TitleAdapter(private val context: Context, private val titlesList: ArrayLi
             //if the length was changed when the timer was running
             setNewTimerLength()
 
-            progress_countdown.progress = 0
+            ivTimer.initTime = 0
 
-            PrefUtil.setSecondsRemaining(timerLengthSeconds, this)
+            PrefUtil.setSecondsRemaining(timerLengthSeconds, context)
             secondsRemaining = timerLengthSeconds
 
-            updateButtons()
             updateCountdownUI()
         }
 
