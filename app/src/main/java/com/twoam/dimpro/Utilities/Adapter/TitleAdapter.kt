@@ -14,7 +14,6 @@ import com.bumptech.glide.Glide
 import com.twoam.dimpro.Model.Title
 import com.twoam.dimpro.R
 import android.os.CountDownTimer
-import android.util.Log
 import android.view.MotionEvent
 import com.twoam.dimpro.Utilities.General.PrefUtil
 import com.twoam.dimpro.Utilities.General.TimerExpiredReceiver
@@ -36,8 +35,8 @@ class TitleAdapter(private val context: Context, private val titlesList: ArrayLi
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var title: Title = Title()
     private var countDownInterval = 1000L //1 seconds
-    private var minutesInMS = 1800000L //30 minutes
-    private var totalMS = 1800L //30 minutes
+    private var minutesInMS = 300000L //total mili seconds in 30 minutes
+    private var totalMS = 300L //30 minutes
     private var format = "%02d:%02d:%02d"
     private var listHolders = ArrayList<MyViewHolder>()
     private var timerState = TimerState.Stopped
@@ -80,35 +79,32 @@ class TitleAdapter(private val context: Context, private val titlesList: ArrayLi
     override fun onBindViewHolder(holder: TitleAdapter.MyViewHolder, position: Int) {
         title = titlesList[position]
 
-        holder.minutesRemaining = holder.getTimeRemaining(holder.expireDate)
+       holder.secondsRemaining= holder.getTimeRemaining(holder.expireDate)
 
-//        if (listHolders.contains(holder)) {
-//
-//
-//        } else {
-        holder.id = position
-        listHolders.add(holder)
-        Glide.with(context).load(R.drawable.profile)
-                .into(holder.titleImage)
+        if (listHolders.contains(holder)) {
+            holder.onPause()
+        } else {
+            holder.id = position
+            listHolders.add(holder)
+            Glide.with(context).load(R.drawable.profile)
+                    .into(holder.titleImage)
 
-        holder.tvxl.text = title.x1
-        holder.tv12.text = title.x2
-        holder.tvX2.text = title.x3
-        holder.tv4.text = title.x4
-        holder.tvX3.text = title.x5
-        holder.tv_4.text = title.x6
+            holder.tvxl.text = title.x1
+            holder.tv12.text = title.x2
+            holder.tvX2.text = title.x3
+            holder.tv4.text = title.x4
+            holder.tvX3.text = title.x5
+            holder.tv_4.text = title.x6
 
+            holder.ivTimer.endTime = totalMS
+            holder.ivTimer.initTime = 0
 
+            if (holder.cTimer != null)
+                holder.cTimer!!.cancel()
 
-        if (holder.cTimer != null)
-            holder.cTimer!!.cancel()
-
-            holder.ivTimer.endTime = (holder.minutesRemaining) /  60
-        holder.ivTimer.initTime = 0
-
-        holder.startTimer(holder.minutesRemaining, countDownInterval, holder.tvTimer)
-
-//        }
+            holder.startTimer(minutesInMS, countDownInterval, holder.tvTimer)
+//           holder.startTimer()
+        }
 
     }
 
@@ -125,8 +121,8 @@ class TitleAdapter(private val context: Context, private val titlesList: ArrayLi
 
         var timerLengthSeconds: Long = 0
         var timerState = TimerState.Stopped
-        var minutesRemaining: Long = 0
-        var expireDate = "August 14, 2019 at 15:30:47 PM UTC+2"
+        var secondsRemaining: Long = 0
+        var expireDate="August 14, 2019 at 15:32:47 PM UTC+2"
         var id = 0
         var titleImage: ImageView = itemView.findViewById(R.id.ivImage)
         var tvxl: TextView = itemView.findViewById(R.id.tvxl)
@@ -199,38 +195,110 @@ class TitleAdapter(private val context: Context, private val titlesList: ArrayLi
 
         }
 
-        fun getTimeRemaining(expireDate: String): Long {//"August 14, 2019 at 15:30:47 PM UTC+2"
-            val offset = TimeZone.getDefault().rawOffset + TimeZone.getDefault().dstSavings
-            val now = System.currentTimeMillis() + offset
+        fun getTimeRemaining(expireDate: String): Long {//"August 14, 2019 at 11:10:47 AM UTC+2"
 
             var dateTime = expireDate.split(" at")
             var newDate = dateTime[0] + dateTime[1]
             val dateFormatter = SimpleDateFormat("MMMM dd, yyyy HH:mm:ss aa")
-
-
             val expireDate = dateFormatter.parse(newDate)
+
+
             val currentDate = Calendar.getInstance().time
 
             return (expireDate.time - currentDate.time)
         }
 
-        private fun getDate(ourDate: String): String {
-            var ourDate = ourDate
-            try {
-                val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-                formatter.timeZone = TimeZone.getTimeZone("UTC")
-                val value = formatter.parse(ourDate)
+        fun onResume() {
+            initTimer()
+            removeAlarm(context)
+        }
 
-                val dateFormatter = SimpleDateFormat("MM-dd-yyyy HH:mm") //this format changeable
-                dateFormatter.timeZone = TimeZone.getDefault()
-                ourDate = dateFormatter.format(value)
+        fun onPause() {
 
-                //Log.d("ourDate", ourDate);
-            } catch (e: Exception) {
-                ourDate = "00-00-0000 00:00"
+            if (timerState == TimerState.Running) {
+                cTimer!!.cancel()
+                val wakeUpTime = setAlarm(context, nowSeconds, secondsRemaining)
+
+            } else if (timerState == TimerState.Paused) {
+
             }
 
-            return ourDate
+            PrefUtil.setPreviousTimerLengthSeconds(timerLengthSeconds, context)
+            PrefUtil.setSecondsRemaining(secondsRemaining, context)
+            PrefUtil.setTimerState(timerState, context)
+        }
+
+        fun initTimer() {
+            timerState = PrefUtil.getTimerState(context)
+
+            //we don't want to change the length of the timer which is already running
+            //if the length was changed in settings while it was backgrounded
+            if (timerState == TimerState.Stopped)
+                setNewTimerLength()
+            else
+                setPreviousTimerLength()
+
+            secondsRemaining = if (timerState == TimerState.Running || timerState == TimerState.Paused)
+                PrefUtil.getSecondsRemaining(context)
+            else
+                timerLengthSeconds
+
+            val alarmSetTime = PrefUtil.getAlarmSetTime(context)
+            if (alarmSetTime > 0)
+                secondsRemaining -= nowSeconds - alarmSetTime
+
+            if (secondsRemaining <= 0)
+                onTimerFinished()
+            else if (timerState == TimerState.Running)
+                startTimer()
+
+            updateCountdownUI()
+        }
+
+        private fun setNewTimerLength() {
+            val lengthInMinutes = PrefUtil.getTimerLength(context)
+            timerLengthSeconds = (lengthInMinutes * 60L)
+            ivTimer.endTime = timerLengthSeconds
+        }
+
+        private fun setPreviousTimerLength() {
+            timerLengthSeconds = PrefUtil.getPreviousTimerLengthSeconds(context)
+            ivTimer.endTime = timerLengthSeconds
+        }
+
+        private fun onTimerFinished() {
+            timerState = TimerState.Stopped
+
+            //set the length of the timer to be the one set in SettingsActivity
+            //if the length was changed when the timer was running
+            setNewTimerLength()
+
+            ivTimer.initTime = 0
+
+            PrefUtil.setSecondsRemaining(timerLengthSeconds, context)
+            secondsRemaining = timerLengthSeconds
+
+            updateCountdownUI()
+        }
+
+        fun startTimer() {
+            timerState = TimerState.Running
+
+            cTimer = object : CountDownTimer(secondsRemaining * 1000, 1000) {
+                override fun onFinish() = onTimerFinished()
+
+                override fun onTick(millisUntilFinished: Long) {
+                    secondsRemaining = millisUntilFinished / 1000
+                    updateCountdownUI()
+                }
+            }.start()
+        }
+
+        private fun updateCountdownUI() {
+            val minutesUntilFinished = secondsRemaining / 60
+            val secondsInMinuteUntilFinished = secondsRemaining - minutesUntilFinished * 60
+            startTimer(secondsInMinuteUntilFinished, countDownInterval, tvTimer)
+
         }
 
     }
